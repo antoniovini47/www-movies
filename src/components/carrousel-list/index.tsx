@@ -14,6 +14,7 @@ import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 
 type CarrouselListProps = {
   title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   queryFunction: () => Promise<any>;
 };
 
@@ -83,7 +84,7 @@ const CarrouselList = ({ title, queryFunction }: CarrouselListProps) => {
       <div
         ref={carouselRef}
         className="flex overflow-x-auto mx-6 gap-4 scroll-smooth snap-x snap-mandatory">
-        {data?.results.map((movie: any) => (
+        {data?.results.map((movie) => (
           <Card
             key={movie.id}
             className="min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end">
