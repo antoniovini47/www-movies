@@ -1,5 +1,10 @@
 import CarrouselList from "@/components/carrousel-list";
 import { getPopularMovies, getTopRatedMovies, getUpcomingMovies } from "@/services/movie.service";
+import Search from "@/components/search";
+
+export const SectionSearch = () => {
+  return <Search />;
+};
 
 export const SectionCarrousel = () => {
   return (
