@@ -1,5 +1,4 @@
-import { useGetPopularMovies } from "@/queries/movie.queries";
-import { useEffect } from "react";
+import { useGetMovies } from "@/queries/movie.queries";
 import {
   Card,
   CardContent,
@@ -8,10 +7,42 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LoadingIcon } from "@/components/loading-icon";
+import LoadingIcon from "@/components/loading-icon";
+import RatingStars from "../rating-stars";
+import { useEffect, useRef, useState } from "react";
+import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 
-const CarrouselList = () => {
-  const { data, isLoading, isError, error } = useGetPopularMovies();
+type CarrouselListProps = {
+  title: string;
+  queryFunction: () => Promise<any>;
+};
+
+const CarrouselList = ({ title, queryFunction }: CarrouselListProps) => {
+  const { data, isLoading, isError, error } = useGetMovies(title, queryFunction);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered || !carouselRef.current) return;
+
+    const interval = setInterval(() => {
+      const cardWidth = carouselRef.current?.children[0]?.clientWidth || 0;
+      carouselRef.current.scrollBy({
+        left: cardWidth,
+        behavior: "smooth",
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  const handleScroll = (direction: "left" | "right") => {
+    const cardWidth = carouselRef.current?.children[0]?.clientWidth || 0;
+    carouselRef.current.scrollBy({
+      left: direction === "right" ? cardWidth : -cardWidth,
+      behavior: "smooth",
+    });
+  };
 
   if (isLoading) {
     return (
@@ -30,31 +61,55 @@ const CarrouselList = () => {
   }
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center min-h-screen p-24">
-        <h1 className="text-4xl font-bold">Popular Movies</h1>
-        <div className="grid grid-cols-3 gap-4 mt-4">
-          {data?.results.map((movie) => (
-            <Card key={movie.id} className="w-80">
-              <CardHeader>
-                <CardTitle>{movie.title}</CardTitle>
-                <CardDescription>{movie.overview}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  className="w-full h-auto"
-                />
-              </CardContent>
-              <CardFooter>
-                <p>Rating: {movie.vote_average}</p>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+    <div
+      className="w-full p-6 bg-gray-100 rounded-lg shadow-md relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}>
+      <h1 className="text-2xl font-bold mb-4 text-center">{title}</h1>
+      {isHovered && (
+        <>
+          <button
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-3 py-2 rounded-full hover:bg-opacity-75 z-10"
+            onClick={() => handleScroll("left")}>
+            <IoChevronBackOutline size={20} />
+          </button>
+          <button
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white px-3 py-2 rounded-full hover:bg-opacity-75 z-10"
+            onClick={() => handleScroll("right")}>
+            <IoChevronForwardOutline size={20} />
+          </button>
+        </>
+      )}
+      <div
+        ref={carouselRef}
+        className="flex overflow-x-auto mx-6 gap-4 scroll-smooth snap-x snap-mandatory">
+        {data?.results.map((movie: any) => (
+          <Card
+            key={movie.id}
+            className="min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end">
+            <CardHeader className="relative">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="w-full h-auto rounded-t-lg"
+              />
+              <CardTitle className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-md text-sm">
+                {movie.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-sm text-gray-600 line-clamp-3">
+                {movie.overview}
+              </CardDescription>
+            </CardContent>
+            <CardFooter>
+              <RatingStars rating={movie.vote_average} />
+            </CardFooter>
+          </Card>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
+
 export default CarrouselList;

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/query.provider";
-import { Navbar } from "@/components/navbar";
+import Navbar from "@/components/navbar";
+import app from "@/constants/app-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WWW Movies",
-  description: "What and Where to Watch Movies",
+  title: app.name,
+  description: app.description,
 };
 
 export default function RootLayout({
