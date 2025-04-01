@@ -23,7 +23,7 @@ import {
 import { DropDownUser } from "../navbar-dropdown-user";
 import app from "@/constants/app-data";
 
-export function Navbar() {
+const Navbar = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleLinkClick = () => {
@@ -92,4 +92,6 @@ export function Navbar() {
       </div>
     </header>
   );
-}
+};
+
+export default Navbar;
