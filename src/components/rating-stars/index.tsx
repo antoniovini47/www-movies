@@ -9,7 +9,7 @@ const RatingStars: React.FC<RatingProps> = ({ rating }) => {
   const filledStars = Math.round(rating / 2);
   const emptyStars = 5 - filledStars;
 
-  const getBadgeVariant = (rating: number): "string" => {
+  const getBadgeVariant = (rating: number): "default" | "secondary" | "destructive" => {
     if (rating >= 8) return "default";
     if (rating >= 5) return "secondary";
     return "destructive";

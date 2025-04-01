@@ -27,6 +27,7 @@ const CarrouselList = ({ title, queryFunction }: CarrouselListProps) => {
     if (isHovered || !carouselRef.current) return;
 
     const interval = setInterval(() => {
+      if (!carouselRef.current) return;
       const cardWidth = carouselRef.current?.children[0]?.clientWidth || 0;
       carouselRef.current.scrollBy({
         left: cardWidth,
@@ -38,6 +39,7 @@ const CarrouselList = ({ title, queryFunction }: CarrouselListProps) => {
   }, [isHovered]);
 
   const handleScroll = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
     const cardWidth = carouselRef.current?.children[0]?.clientWidth || 0;
     carouselRef.current.scrollBy({
       left: direction === "right" ? cardWidth : -cardWidth,
