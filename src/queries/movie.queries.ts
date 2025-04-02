@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import type { MovieListResponse } from "@/types/movie";
-import { searchMovies } from "@/services/movie.service";
+import * as MovieService from "@/services/movie.service";
 import { SearchParams } from "@/types/search";
 
 export const useGetMovies = (
@@ -21,7 +21,18 @@ export const useSearchMovies = (
 ) => {
   return useQuery<MovieListResponse, Error>({
     queryKey: ["search-movies", searchParams],
-    queryFn: () => searchMovies(searchParams),
+    queryFn: () => MovieService.searchMovies(searchParams),
+    ...options,
+  });
+};
+
+export const useGetMovieDetails = (
+  id: string,
+  options?: Omit<UseQueryOptions<any, Error>, "queryKey" | "queryFn">
+) => {
+  return useQuery<any, Error>({
+    queryKey: ["movie-details", id],
+    queryFn: () => MovieService.getMovieDetails(id),
     ...options,
   });
 };
