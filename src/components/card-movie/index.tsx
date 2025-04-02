@@ -13,11 +13,17 @@ import { Badge } from "@/components/ui/badge";
 
 type CardMovieProps = {
   movie: Movie;
+  viewMode?: "grid" | "carrousel";
 };
 
-const CardMovie = ({ movie }: CardMovieProps) => {
+const CardMovie = ({ movie, viewMode }: CardMovieProps) => {
   return (
-    <Card className="min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end">
+    <Card
+      className={`${
+        viewMode === "carrousel"
+          ? `min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end`
+          : `rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300`
+      }`}>
       <CardHeader className="relative">
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

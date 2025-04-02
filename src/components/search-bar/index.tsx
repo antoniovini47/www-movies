@@ -9,9 +9,7 @@ type SearchBarProps = {
 };
 
 const SearchBar = ({ onSearchChanges }: SearchBarProps) => {
-  const [searchParams, setSearchParams] = useState<SearchParams>({
-    text: "",
-  });
+  const [searchParams, setSearchParams] = useState<SearchParams | null>(null);
 
   const debouncedOnSearchChanges = debounce((updatedSearchParams: SearchParams) => {
     setSearchParams(updatedSearchParams);

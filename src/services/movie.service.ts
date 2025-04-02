@@ -43,7 +43,6 @@ export async function getUpcomingMovies() {
 export async function searchMovies(searchParams: SearchParams) {
   const response = await api(
     `${theMovieDbBaseURL}/search/movie?query=${searchParams.text}
-    ${searchParams.year ? `&year='${searchParams.year} ` : ""}
     ${searchParams.page ? `&page=${searchParams.page}` : ""}`,
     {
       method: "GET",
