@@ -29,7 +29,6 @@ const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) 
 
   return (
     <div className="container mx-auto p-6">
-      {/* Movie Header */}
       <div className="flex flex-col md:flex-row items-center gap-6">
         <img
           src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
@@ -46,7 +45,6 @@ const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) 
 
       <Separator className="my-6" />
 
-      {/* Movie Overview */}
       <div>
         <h2 className="text-2xl font-bold mb-4">Overview</h2>
         <p className="text-gray-600">{data.overview || "No overview available."}</p>
@@ -54,7 +52,6 @@ const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) 
 
       <Separator className="my-6" />
 
-      {/* Additional Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <h3 className="text-xl font-bold mb-2">Original Language</h3>
@@ -74,13 +71,13 @@ const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) 
         </div>
       </div>
 
-      {/* Genres */}
       {data.genres && (
         <>
           <Separator className="my-6" />
           <div>
             <h3 className="text-xl font-bold mb-2">Genres</h3>
             <ul className="flex flex-wrap gap-2">
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
               {data.genres.map((genre: any) => (
                 <Badge key={genre.id} variant="outline">
                   {genre.name}

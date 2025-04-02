@@ -28,8 +28,10 @@ export const useSearchMovies = (
 
 export const useGetMovieDetails = (
   id: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: Omit<UseQueryOptions<any, Error>, "queryKey" | "queryFn">
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return useQuery<any, Error>({
     queryKey: ["movie-details", id],
     queryFn: () => MovieService.getMovieDetails(id),

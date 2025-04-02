@@ -31,10 +31,10 @@ const SearchResult = ({ searchInput }: SearchResultProps) => {
     );
   }
 
-  if (isError) {
+  if (isError || !data) {
     return (
       <div className="flex items-center justify-center min-h-screen p-24">
-        <p className="text-red-500">Error: {error.message}</p>
+        <p className="text-red-500">Error: {error?.message}</p>
       </div>
     );
   }
@@ -47,24 +47,21 @@ const SearchResult = ({ searchInput }: SearchResultProps) => {
     <div className="w-full p-6 bg-gray-100 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Search Results</h1>
 
-      {/* Movie Cards */}
       <div className="grid grid-cols-5 gap-4">
         {data.results.map((movie) => (
           <CardMovie key={movie.id} movie={movie} viewMode="grid" />
         ))}
       </div>
 
-      {/* Pagination */}
       <Pagination className="mt-6">
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
               onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
+              isActive={currentPage === 1}
             />
           </PaginationItem>
 
-          {/* Page Numbers */}
           {Array.from({ length: data.total_pages }).map((_, index) => (
             <PaginationItem key={index}>
               <PaginationLink
@@ -78,7 +75,7 @@ const SearchResult = ({ searchInput }: SearchResultProps) => {
           <PaginationItem>
             <PaginationNext
               onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === data.total_pages}
+              isActive={currentPage === data.total_pages}
             />
           </PaginationItem>
         </PaginationContent>
