@@ -2,7 +2,7 @@ import { useGetMovies } from "@/queries/movie.queries";
 import LoadingIcon from "@/components/loading-icon";
 import { useEffect, useRef, useState } from "react";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
-import CardMovie from "../card-movie";
+import CardMovie from "@/components/card-movie";
 
 type CarrouselListProps = {
   title: string;

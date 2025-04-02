@@ -9,7 +9,7 @@ import {
 
 import RatingStars from "@/components/rating-stars";
 import type { Movie } from "@/types/movie";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 type CardMovieProps = {
   movie: Movie;

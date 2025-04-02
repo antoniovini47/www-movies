@@ -20,7 +20,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { DropDownUser } from "../navbar-dropdown-user";
+import { DropDownUser } from "@/components/navbar-dropdown-user";
 import app from "@/constants/app-data";
 
 const Navbar = () => {
