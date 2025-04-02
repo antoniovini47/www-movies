@@ -3,7 +3,7 @@ import SearchBar from "@/components/search-bar";
 import SearchResult from "@/components/search-result";
 import type { SearchParams } from "@/types/search";
 
-export const SectionSearch = () => {
+const SectionSearch = () => {
   const [searchParams, setSearchParams] = useState<SearchParams | null>(null);
 
   return (
@@ -13,3 +13,5 @@ export const SectionSearch = () => {
     </>
   );
 };
+
+export default SectionSearch;
