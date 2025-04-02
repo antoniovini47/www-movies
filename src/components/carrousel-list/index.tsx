@@ -1,16 +1,8 @@
 import { useGetMovies } from "@/queries/movie.queries";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import LoadingIcon from "@/components/loading-icon";
-import RatingStars from "../rating-stars";
 import { useEffect, useRef, useState } from "react";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
+import CardMovie from "@/components/card-movie";
 
 type CarrouselListProps = {
   title: string;
@@ -87,28 +79,7 @@ const CarrouselList = ({ title, queryFunction }: CarrouselListProps) => {
         ref={carouselRef}
         className="flex overflow-x-auto mx-6 gap-4 scroll-smooth snap-x snap-mandatory">
         {data?.results.map((movie) => (
-          <Card
-            key={movie.id}
-            className="min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end">
-            <CardHeader className="relative">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="w-full h-auto rounded-t-lg"
-              />
-              <CardTitle className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-md text-sm">
-                {movie.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-sm text-gray-600 line-clamp-3">
-                {movie.overview}
-              </CardDescription>
-            </CardContent>
-            <CardFooter>
-              <RatingStars rating={movie.vote_average} />
-            </CardFooter>
-          </Card>
+          <CardMovie key={movie.id} movie={movie} viewMode="carrousel" />
         ))}
       </div>
     </div>

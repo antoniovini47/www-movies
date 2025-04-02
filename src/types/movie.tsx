@@ -1,4 +1,4 @@
-export type MoviePopularListResponse = {
+export type MovieListResponse = {
   page: number;
   results: Movie[];
   total_pages: number;
