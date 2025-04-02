@@ -55,3 +55,15 @@ export async function searchMovies(searchParams: SearchParams) {
 
   return response.json();
 }
+
+export async function getMovieDetails(id: string) {
+  const response = await api(`${theMovieDbBaseURL}/movie/${id}`, {
+    method: "GET",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch movie details");
+  }
+
+  return response.json();
+}
