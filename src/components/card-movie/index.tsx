@@ -37,9 +37,9 @@ const CardMovie = ({ movie, className }: CardMovieProps) => {
             onLoad={() => setIsImageLoaded(true)}
           />
         </Link>
-        <CardTitle className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-md text-sm transition-transform duration-1000 group-hover:-translate-y-1">
-          <Badge variant="default" className="max-w-4/5 px-5">
-            {movie.title}
+        <CardTitle className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-md text-sm transition-transform duration-1000 group-hover:-translate-y-1 z-20 max-w-4/5">
+          <Badge variant="default" className="w-full px-2 truncate">
+            <text className="truncate text-start">{movie.title}</text>
           </Badge>
         </CardTitle>
       </CardHeader>

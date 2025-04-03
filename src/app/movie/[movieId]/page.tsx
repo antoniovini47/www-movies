@@ -5,6 +5,7 @@ import LoadingIcon from "@/components/loading-icon";
 import { Badge } from "@/components/ui/badge";
 import { use } from "react";
 import { Separator } from "@/components/ui/separator";
+import RatingStars from "@/components/rating-stars";
 
 const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) => {
   const { movieId } = use(params);
@@ -38,8 +39,21 @@ const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) 
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl font-bold">{data.title}</h1>
           <p className="text-lg text-gray-600">{data.tagline || "No tagline available"}</p>
-          <Badge variant="default">Rating: {data.vote_average.toFixed(1)}</Badge>
           <Badge variant="secondary">Release Date: {data.release_date}</Badge>
+          <RatingStars rating={data.vote_average} />
+          {data.genres && (
+            <div>
+              <h3 className="text-xl font-bold mb-2">Genres</h3>
+              <ul className="flex flex-wrap gap-2">
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                {data.genres.map((genre: any) => (
+                  <Badge key={genre.id} variant="outline">
+                    {genre.name}
+                  </Badge>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
@@ -70,23 +84,6 @@ const MovieDetailsPage = ({ params }: { params: Promise<{ movieId: string }> }) 
           <p>{data.runtime} minutes</p>
         </div>
       </div>
-
-      {data.genres && (
-        <>
-          <Separator className="my-6" />
-          <div>
-            <h3 className="text-xl font-bold mb-2">Genres</h3>
-            <ul className="flex flex-wrap gap-2">
-              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-              {data.genres.map((genre: any) => (
-                <Badge key={genre.id} variant="outline">
-                  {genre.name}
-                </Badge>
-              ))}
-            </ul>
-          </div>
-        </>
-      )}
     </div>
   );
 };
