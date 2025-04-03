@@ -1,6 +1,11 @@
+/* Comentário para o teste técnico: 
+Aqui eu quis demonstrar como pode ser feito um menu responsivo utilizando o componente Sheet do shadcn.
+Ele possui 3 estágios para demonstração de diferentes telas: desktop/tablet/smartphone, por exemplo.
+*/
+
 "use client";
 
-import { FileText, LifeBuoy, Menu } from "lucide-react";
+import { Home, LifeBuoy, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -31,7 +36,7 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { name: "Home", href: "/", icon: FileText },
+    { name: "Home", href: "/", icon: Home },
     { name: "Support", href: "/", icon: LifeBuoy },
   ];
   return (

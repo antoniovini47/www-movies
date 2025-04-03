@@ -1,3 +1,22 @@
+/* Comentário para o teste técnico: 
+Aqui eu quis demonstrar um pouco mais de complexidade, utilizando o Tailwind CSS para estilização e animações, 
+além de criar um componente Badge reutilizável.
+E também inclui a lógica da função getBadgeColorByRating que calcula a cor do badge com base na classificação.
+Como para cada um dos 3 níveis possuem sua própria lógica de cor, eu criei uma função para evitar repetir o mesmo código.
+
+Uma boa prática poderia ser tirar essa lógica de cor para um arquivo separado, talvez em utils, mas quis deixar aqui,
+porque pelo menos no projeto teste, não foi necessário fazer isso.
+
+Esses cálculos de getBadgeColorByRating são feitos para utilizar as cores do Tailwind CSS, 
+importante ressaltar que foi necessário fazer ajustes no arquivo tailwind.config.js para que as cores
+já estivem pré-carregadas e disponíveis para uso, como por exemplo:
+bg-green-400, bg-yellow-500, bg-red-400.
+
+Cada cor tem um início (400/200/400) e um limite (500/300/500) e um "range" próprio
+porque visualmente fariam mais sentido para o usuário, mas isso poderia ser
+ajustado para o gosto do desenvolvedor.
+ */
+
 import { Badge } from "@/components/ui/badge";
 
 type RatingProps = {

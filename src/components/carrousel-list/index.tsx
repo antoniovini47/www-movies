@@ -1,3 +1,12 @@
+/* Comentário para o teste técnico: 
+Aqui resolvi criar um dos formatos de exibição de filmes que poderia ser reutilizado em várias partes do site.
+
+Esse component também possui um carrousel que avança automaticamente, mas para caso o usuário esteja
+interagindo com o carrousel, ele pausa o avanço automático.
+O carrousel é responsivo e se adapta a diferentes tamanhos de tela, exibindo 3 filmes em telas menores e 5 filmes em telas maiores.
+Aqui demonstro o uso de 3 hooks do react: useEffect, useRef, useState
+*/
+
 import { useGetMovies } from "@/queries/movie.queries";
 import LoadingIcon from "@/components/loading-icon";
 import { useEffect, useRef, useState } from "react";

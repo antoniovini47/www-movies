@@ -1,3 +1,12 @@
+/* Comentário para o teste técnico: 
+Aqui eu quis demonstrar a interação de um objeto com outro (search-bar) e (search-result)
+
+Esse é o component responsável por receber o input do usuário e enviar os novos parâmetros de busca
+ao outro component através do onSearchChanges.
+
+Também utilizei da função debounce do lodash para evitar requisições excessivas à API enquanto o usuário digita.
+*/
+
 import { Input } from "@/components/ui/input";
 import { FaSearch } from "react-icons/fa";
 import { debounce } from "lodash";

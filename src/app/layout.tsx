@@ -1,3 +1,8 @@
+/* Comentário para o teste técnico: 
+Aqui eu quis demonstrar como utlizaria providers e uma navbar
+ que se estendessem por toda a aplicação.
+*/
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

@@ -1,7 +1,15 @@
+/* Comentário para o teste técnico: 
+Aqui precisei criar este arquivo para controle de cores, pois,
+os badges de classificação dos filmes são gerados dinamicamente e não
+são reconhecidos pelo tailwind, então adicionei as cores que são utilizadas
+para que o tailwind gere as classes correspondentes.
+
+PS: Algumas dessas não são mais usadas porque o "range" foi limitado, porque,
+o amarel-100 é muito claro e tem pouco apelo visual.
+*/
+
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}", // Adjust based on your project structure
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   safelist: [
     "bg-green-100",
     "bg-green-200",

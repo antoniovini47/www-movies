@@ -1,3 +1,12 @@
+/* Comentário para o teste técnico: 
+Nesse arquivo quis demonstrar principalmente como eu faria para fazer uma página que pegasse
+dados através dos seus parâmetros, como por exemplo o id do filme, e então consumisse uma API
+e mostrasse os resultados da sua response.
+
+Pegando o id através do "use" do react e usando o react query para controlar o estado da requisição.
+Foquei na funcionalidade e não na estética aqui.
+A página é bem simples, mas tem um loading e um erro caso a requisição falhe.
+*/
 "use client";
 
 import { useGetMovieDetails } from "@/queries/movie.queries";

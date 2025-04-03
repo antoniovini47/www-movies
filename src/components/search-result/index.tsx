@@ -1,3 +1,13 @@
+/* Comentário para o teste técnico: 
+Aqui eu quis demonstrar a interação de um objeto com outro (search-bar) e (search-result)
+Onde esse é o responsável por pegar a entrada da busca do usuáruio através do searchInput
+e fazer a requisição para a API, mostrando os resultados.
+
+Também possui o component de paginação do shadcn e refaz a requisição quando o usuário troca de página.
+
+Utiliza de react-query para controlar o estado da requisição e o loading.
+*/
+
 import { useSearchMovies } from "@/queries/movie.queries";
 import LoadingIcon from "@/components/loading-icon";
 import {

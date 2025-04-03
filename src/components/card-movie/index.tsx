@@ -1,3 +1,14 @@
+/* Comentário para o teste técnico: 
+Aqui fiz um component polivalente que utiliza da biblioteca shadcn/ui para criar um card com os 
+dados do filme.
+Nesse arquivo demonstro como funcionaria a utilização do card mesmo em diversos tipos de layout
+passando as classNames que eu gostaria de aplicar. (Assim ele pode utilizando tanto em grid como em flex,
+sem afetar o layout do card)
+
+Também optei optei por utilizar skeletons para melhorar a experiência do usuário enquanto a imagem não carrega.
+E em alguns casos que a imagem não existe, como no caso de filmes antigos, o skeleton é exibido.
+*/
+
 import {
   Card,
   CardHeader,
