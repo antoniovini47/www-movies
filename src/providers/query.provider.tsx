@@ -1,3 +1,9 @@
+/* Comentário para o teste técnico: 
+Aqui é um exemplo de um provider para a utilização do react-query.
+Ele é utilizado para gerenciar o estado global da aplicação,
+especialmente para requisições assíncronas.
+*/
+
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

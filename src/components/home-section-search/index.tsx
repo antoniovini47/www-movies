@@ -1,3 +1,10 @@
+/* Comentário para o teste técnico: 
+Nesse componente eu quis demonstrar como faria a interação entre dois componentes, onde o primeiro
+pode passar dados para o segundo.
+E como eu faria para fazer uma animação de transição para que o segundo apareça
+somente caso o primeiro tenha input, usando o tailwindcss para isso.
+*/
+
 import { useState } from "react";
 import SearchBar from "@/components/search-bar";
 import SearchResult from "@/components/search-result";

@@ -1,3 +1,7 @@
+/* Comentário para o teste técnico: 
+Aqui quis demonstrar como faria a página inicial do site, somente
+chamando components principais que representassem seções do site.
+*/
 "use client";
 import app from "@/constants/app-data";
 import SectionSearch from "@/components/home-section-search";
