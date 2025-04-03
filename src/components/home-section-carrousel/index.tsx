@@ -1,7 +1,7 @@
 import CarrouselList from "@/components/carrousel-list";
 import { getPopularMovies, getTopRatedMovies, getUpcomingMovies } from "@/services/movie.service";
 
-export const SectionCarrousel = () => {
+const SectionCarrousel = () => {
   return (
     <>
       <CarrouselList title="Popular Movies" queryFunction={getPopularMovies} />
@@ -10,3 +10,5 @@ export const SectionCarrousel = () => {
     </>
   );
 };
+
+export default SectionCarrousel;
