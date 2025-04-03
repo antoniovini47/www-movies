@@ -1,6 +1,7 @@
 "use client";
 import app from "@/constants/app-data";
-import { SectionSearch, SectionCarrousel } from "@/components/home-sections";
+import SectionSearch from "@/components/home-section-search";
+import SectionCarrousel from "@/components/home-section-carrousel";
 
 export default function Home() {
   return (
