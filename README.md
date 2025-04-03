@@ -6,6 +6,9 @@ Uma simples aplicação para demonstração do consumo de uma API pública https
 
 ## Comentário para o teste técnico:
 
+Utilizei do **Git Flow** durante toda a implementação do projeto, para fins de demonstração.
+Pode-se consultar o histórico das branches main, develops e as de features para exemplos.
+
 Durante toda a aplicação busque EXATAMENTE por:
 
 ```
