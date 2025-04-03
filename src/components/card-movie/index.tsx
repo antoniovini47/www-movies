@@ -15,19 +15,14 @@ import { useState } from "react";
 
 type CardMovieProps = {
   movie: Movie;
-  viewMode?: "grid" | "carrousel";
+  className?: string;
 };
 
-const CardMovie = ({ movie, viewMode }: CardMovieProps) => {
+const CardMovie = ({ movie, className }: CardMovieProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
-    <Card
-      className={`${
-        viewMode === "carrousel"
-          ? `min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end`
-          : `rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300`
-      }`}>
+    <Card className={className}>
       <CardHeader className="relative">
         {!isImageLoaded && <Skeleton className="w-full min-h-[300px] rounded-t-lg" />}
         <img

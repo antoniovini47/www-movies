@@ -49,7 +49,11 @@ const SearchResult = ({ searchInput }: SearchResultProps) => {
 
       <div className="grid grid-cols-5 gap-4">
         {data.results.map((movie) => (
-          <CardMovie key={movie.id} movie={movie} viewMode="grid" />
+          <CardMovie
+            key={movie.id}
+            movie={movie}
+            className="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+          />
         ))}
       </div>
 

@@ -79,7 +79,11 @@ const CarrouselList = ({ title, queryFunction }: CarrouselListProps) => {
         ref={carouselRef}
         className="flex overflow-x-auto mx-6 gap-4 scroll-smooth snap-x snap-mandatory">
         {data?.results.map((movie) => (
-          <CardMovie key={movie.id} movie={movie} viewMode="carrousel" />
+          <CardMovie
+            key={movie.id}
+            movie={movie}
+            className="min-w-[calc(100%_/_3)] max-w-[calc(100%_/_3)] md:min-w-[calc(100%_/_5)] md:max-w-[calc(100%_/_5)] rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 snap-end"
+          />
         ))}
       </div>
     </div>
